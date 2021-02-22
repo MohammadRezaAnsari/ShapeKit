@@ -1,3 +1,1 @@
-struct ShapeKit {
-    var text = "Hello, World!"
-}
+struct ShapeKit {}
