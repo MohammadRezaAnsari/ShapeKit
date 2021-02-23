@@ -66,7 +66,7 @@ public enum ShapeCornersEnum {
         case .couple(.top):
             return [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         case .couple(.bottom):
-            return [.layerMinXMaxYCorner, .layerMinXMaxYCorner]
+            return [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         case .couple(.right):
             return [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         case .couple(.left):
