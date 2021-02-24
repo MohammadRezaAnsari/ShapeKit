@@ -7,28 +7,28 @@
 
 import UIKit
 
-struct CircleShape: Shape {
+public struct CircleShape: Shape {
     
-    var corners: CACornerMask? = ShapeCornersEnum.master(.all).cornerMask
-    var radius: Int? = 0
+    public var corners: CACornerMask = .all
     
-    public func draw(_ view: UIView) {
-        guard corners != nil, radius != nil else { return }
+    public init() { }
+    
+    public func apply(_ view: UIView) {
         setCornerRadius(view)
         setCorner(view)
     }
-    
     
     // MARK: - Private Methods
     private func setCornerRadius(_ view: UIView) {
         let height = view.bounds.height
         let width = view.bounds.width
-        let size: CGFloat = (height > width ) ? height : width
-        view.layer.cornerRadius = CGFloat(size/2)
+        let maxSize: CGFloat = (height > width ) ? height : width
+        let radius = maxSize/2
+        view.layer.cornerRadius = CGFloat(radius)
     }
     
     private func setCorner(_ view: UIView) {
-        view.layer.maskedCorners = corners!
+        view.layer.maskedCorners = corners
         view.layer.masksToBounds = true
     }
 }

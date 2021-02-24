@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 extension UIBezierPath {
     
     convenience init(rect: CGRect, topLeft: CGSize = .zero, topRight: CGSize = .zero, bottomLeft: CGSize = .zero, bottomRight: CGSize = .zero) {
@@ -26,7 +27,7 @@ extension UIBezierPath {
         let point = rect.origin
         let movingPoint: CGPoint
         
-        if size != .zero{
+        if size != .zero {
             movingPoint = CGPoint(x: (point.x + size.width), y: point.y)
             path.move(to: movingPoint)
         } else {
@@ -39,7 +40,7 @@ extension UIBezierPath {
         
         let point = CGPoint(x: rect.maxX, y: rect.minY)
         
-        if size != .zero{
+        if size != .zero {
             let linePoint = CGPoint(x: (point.x - size.width), y: point.y)
             path.addLine(to: linePoint)
             
@@ -57,7 +58,7 @@ extension UIBezierPath {
         
         let point = CGPoint(x: rect.maxX, y: rect.maxY)
         
-        if size != .zero{
+        if size != .zero {
             let linePoint = CGPoint(x: point.x, y: (point.y - size.height))
             path.addLine(to: linePoint)
             
@@ -75,7 +76,7 @@ extension UIBezierPath {
         
         let point = CGPoint(x: rect.minX, y: rect.maxY)
         
-        if size != .zero{
+        if size != .zero {
             let linePoint = CGPoint(x: (point.x + size.width), y: point.y)
             path.addLine(to: linePoint)
             
@@ -93,7 +94,7 @@ extension UIBezierPath {
         
         let point = rect.origin
         
-        if size != .zero{
+        if size != .zero {
             let linePoint = CGPoint(x: point.x, y: (point.y + size.height))
             path.addLine(to: linePoint)
             
@@ -112,6 +113,3 @@ extension UIBezierPath {
         path.addLine(to: linePoint)
     }
 }
-
-
-

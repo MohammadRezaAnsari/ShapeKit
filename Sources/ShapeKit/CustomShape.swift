@@ -7,23 +7,21 @@
 
 import UIKit
 
-struct CustomShape: Shape {
-    
-    var corners: CACornerMask?
-    var radius: Int?
+public struct CustomShape: Shape {
+        
     var topRight: CGFloat
     var topLeft: CGFloat
     var bottomRight: CGFloat
     var bottomLeft: CGFloat
     
-    init(topRight: CGFloat, topLeft: CGFloat, bottomRight: CGFloat, bottomLeft: CGFloat) {
-        self.topRight = topRight
-        self.topLeft = topLeft
-        self.bottomRight = bottomRight
-        self.bottomLeft = bottomLeft
+    public init(topRight: Radius = .none, topLeft: Radius = .none, bottomRight: Radius = .none, bottomLeft: Radius = .none) {
+        self.topRight = topLeft.rawValue.asCGFloat
+        self.topLeft = topLeft.rawValue.asCGFloat
+        self.bottomRight = bottomRight.rawValue.asCGFloat
+        self.bottomLeft = bottomLeft.rawValue.asCGFloat
     }
     
-    public func draw(_ view: UIView) {
+    public func apply(_ view: UIView) {
         setCornerRadius(view)
     }
     
@@ -44,4 +42,8 @@ struct CustomShape: Shape {
 }
 
 
-
+fileprivate extension BinaryInteger {
+    var asCGFloat: CGFloat {
+        CGFloat(self)
+    }
+}
