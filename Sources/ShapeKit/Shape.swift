@@ -14,13 +14,15 @@ public protocol Shape {
     func apply(_ view: UIView)
 }
 
-
+/// - What is the purpose of  the shape if nothing is required?
 extension Shape {
     
     public var corners: CACornerMask {
         get {
+            /// - Try to write single line functions in a single line.
             .none
         }
+        /// - Empty functions are evils! Specially when they have arguments! (Don't forget the `newValue`)
         set { }
     }
        

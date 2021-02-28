@@ -13,6 +13,7 @@ extension UIBezierPath {
         self.init()
         
         var path = CGMutablePath()
+        /// - Why are passing a pointer to a **class** object? It is  a pointer itself.
         movePathOrigin(rect: rect, size: topLeft, to: &path)
         curveTopRight(size: topRight, by: rect, to: &path)
         curveBottomRight(size: bottomRight, by: rect, to: &path)
@@ -21,7 +22,9 @@ extension UIBezierPath {
         path.closeSubpath()
         cgPath = path
     }
-    
+
+    /// - Why are you using a `Size` type if you only need the `width` inside?
+    /// - `inout` is for passing a pointer of a value type, because reference types are pointers!
     private func movePathOrigin(rect: CGRect, size: CGSize, to path: inout CGMutablePath) {
         
         let point = rect.origin
@@ -35,7 +38,8 @@ extension UIBezierPath {
             path.move(to: movingPoint)
         }
     }
-    
+
+    /// - Try to be consist on the arguments order.
     private func curveTopRight(size: CGSize, by rect: CGRect, to path: inout CGMutablePath) {
         
         let point = CGPoint(x: rect.maxX, y: rect.minY)
@@ -50,6 +54,7 @@ extension UIBezierPath {
             path.addCurve(to: curvePoint, control1: firstControl, control2: secondControl)
             
         } else {
+            /// - Try return early.
             addDefaultLine(point: point, to: &path)
         }
     }
