@@ -15,6 +15,9 @@ let package = Package(
     targets: [
         .target(
             name: "ShapeKit",
-            dependencies: [])
+            dependencies: []),
+        .testTarget(
+            name: "ShapeKitTests",
+            dependencies: ["ShapeKit"])
     ]
 )
