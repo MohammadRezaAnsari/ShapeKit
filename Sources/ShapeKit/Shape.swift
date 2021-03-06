@@ -7,31 +7,68 @@
 
 import UIKit
 
-public protocol Shape {
-    var corners: CACornerMask { get set }
-    var radius: Int { get set }
+public struct Shape {
     
-    func apply(_ view: UIView)
+    init(
+        topLeadingRadius: CGFloat,
+        topTrailingRadius: CGFloat,
+        bottomLeadingRadius: CGFloat,
+        bottomTrailingRadius: CGFloat
+    ) {
+        self.topLeadingRadius = topLeadingRadius
+        self.topTrailingRadius = topTrailingRadius
+        self.bottomLeadingRadius = bottomLeadingRadius
+        self.bottomTrailingRadius = bottomTrailingRadius
+    }
+    
+    var topLeadingRadius: CGFloat
+    var topTrailingRadius: CGFloat
+    var bottomLeadingRadius: CGFloat
+    var bottomTrailingRadius: CGFloat
 }
 
-/// - What is the purpose of  the shape if nothing is required?
-extension Shape {
+/* Extra bit standard instance definitions for `Shape'. */
+public extension Shape {
     
-    public var corners: CACornerMask {
-        get {
-            /// - Try to write single line functions in a single line.
-            .none
-        }
-        /// - Empty functions are evils! Specially when they have arguments! (Don't forget the `newValue`)
-        set { }
-    }
-       
-    public var radius: Int {
-        get {
-            Radius.none.rawValue
-        }
-        set { }
-    }
+    static let noneCurved = Shape(
+        topLeadingRadius: .zero,
+        topTrailingRadius: .zero,
+        bottomLeadingRadius: .zero,
+        bottomTrailingRadius: .zero)
     
-    func apply(_ view: UIView) { }
+    static let fullMajorRadiusCurved = Shape(
+        topLeadingRadius: CGFloat(Radius.major.rawValue),
+        topTrailingRadius: CGFloat(Radius.major.rawValue),
+        bottomLeadingRadius: CGFloat(Radius.major.rawValue),
+        bottomTrailingRadius: CGFloat(Radius.major.rawValue))
+    
+    static let fullMinorRadiusCurved = Shape(
+        topLeadingRadius: CGFloat(Radius.minor.rawValue),
+        topTrailingRadius: CGFloat(Radius.minor.rawValue),
+        bottomLeadingRadius: CGFloat(Radius.minor.rawValue),
+        bottomTrailingRadius: CGFloat(Radius.minor.rawValue))
+    
+    static let topMajorRadiusCurved = Shape(
+        topLeadingRadius: CGFloat(Radius.major.rawValue),
+        topTrailingRadius: CGFloat(Radius.major.rawValue),
+        bottomLeadingRadius: .zero,
+        bottomTrailingRadius: .zero)
+    
+    static let topMinorRadiusCurved = Shape(
+        topLeadingRadius: CGFloat(Radius.minor.rawValue),
+        topTrailingRadius: CGFloat(Radius.minor.rawValue),
+        bottomLeadingRadius: .zero,
+        bottomTrailingRadius: .zero)
+    
+    static let bottomMajorRadiusCurved = Shape(
+        topLeadingRadius: .zero,
+        topTrailingRadius: .zero,
+        bottomLeadingRadius: CGFloat(Radius.major.rawValue),
+        bottomTrailingRadius: CGFloat(Radius.major.rawValue))
+    
+    static let bottomMinorRadiusCurved = Shape(
+        topLeadingRadius: .zero,
+        topTrailingRadius: .zero,
+        bottomLeadingRadius: CGFloat(Radius.minor.rawValue),
+        bottomTrailingRadius: CGFloat(Radius.minor.rawValue))
 }

@@ -9,17 +9,17 @@
 public enum Radius {
 
     case none
-    case small
-    case large
+    case minor
+    case major
     case custom(Int)
 
     var rawValue: Int {
         switch self {
         case .none:
             return 0
-        case .small:
+        case .minor:
             return 8
-        case .large:
+        case .major:
             return 16
         case .custom(let number):
             return number
