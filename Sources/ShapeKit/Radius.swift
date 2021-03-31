@@ -5,7 +5,6 @@
 //  Created by MohammadReza Ansary on 2/24/21.
 //
 
-/// - This enum should be a struct inside the `theme`. What if we want to add an option where we need to have other values for a specific situation?
 public enum Radius {
 
     case none
